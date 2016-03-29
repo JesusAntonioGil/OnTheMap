@@ -143,6 +143,9 @@
                             <barButtonItem style="done" systemItem="compose" id="w88-fJ-mle"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="E5k-ij-UY0" id="OOn-gW-HCi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1a6-HN-ev4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

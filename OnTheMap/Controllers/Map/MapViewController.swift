@@ -8,10 +8,14 @@
 
 import UIKit
 import PKHUD
+import MapKit
 
 
 class MapViewController: UIViewController {
 
+    @IBOutlet weak var mapView: MKMapView!
+    
+    
     //Injected
     var presenter: MapPresenterProtocol!
     
@@ -44,7 +48,17 @@ class MapViewController: UIViewController {
         
     }
     
+    //MARK: PRIVATE
     
+    private func addStudentAnnotations(studentLocations: [StudentLocation]) {
+        for studentLocation in studentLocations {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: Double(studentLocation.latitude), longitude: Double(studentLocation.longitude))
+            annotation.title = studentLocation.firstName + studentLocation.lastName
+            annotation.subtitle = studentLocation.mediaURL
+            mapView.addAnnotation(annotation)
+        }
+    }
     
 }
 
@@ -68,6 +82,7 @@ extension MapViewController: MapPresenterDelegate {
     func mapPresenterStudentLocationsSuccess(studentLocationsResponse: StudentLocationsResponse) {
         dispatch_async(dispatch_get_main_queue(),{
             HUD.hide()
+            self.addStudentAnnotations(studentLocationsResponse.locations)
         })
     }
     
@@ -78,3 +93,7 @@ extension MapViewController: MapPresenterDelegate {
         })
     }
 }
+
+
+
+
