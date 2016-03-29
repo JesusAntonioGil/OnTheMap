@@ -9,8 +9,9 @@
 import UIKit
 
 
-protocol RequestClientDelegate {
-    
+@objc protocol RequestClientDelegate {
+    func requestClientSuccess(data: AnyObject)
+    func requestClientError(error: NSError)
 }
 
 
@@ -32,20 +33,25 @@ class RequestClient: NSObject {
         
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            if(error != nil) {
+                self.delegate?.requestClientError(error!)
+                return
+            }
             
+            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
+            self.delegate?.requestClientSuccess(newData)
         }
         task.resume()
-        
     }
     
     //MARK: PRIVATE
     
     private func urlWithParams(url: NSURL, parameters: [String]!) -> NSURL {
-        let stringUrl = url.absoluteString
+        var stringUrl = url.absoluteString
         for param in parameters {
-            stringUrl.append("/\(param)")
+            //stringUrl.append("/\(param)")
         }
-        return NSURL(string: stringUrl)
+        return NSURL(string: stringUrl)!
     }
     
     private func httpBody(body: [String: AnyObject]!) -> NSData? {

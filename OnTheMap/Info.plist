@@ -5,6 +5,8 @@
 	<key>TyphoonInitialAssemblies</key>
 	<array>
 		<string>ControllerAssembly</string>
+		<string>InteractorAssembly</string>
+		<string>HelperAssembly</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

@@ -16,5 +16,34 @@ import UIKit
 
 class LoginPresenter: NSObject, LoginPresenterProtocol {
 
+    //Injected
+    var loginInteractorProtocol: LoginInteractorProtocol!
+    
     var delegate: LoginPresenterDelegate?
+    
+    
+    //MARK: LIFE CYCLE
+    
+    override func typhoonDidInject() {
+        loginInteractorProtocol.delegate = self
+    }
+    
+    //MARK: PUBLIC
+    
+    func login(username: String, password: String) {
+        let loginDTO = LoginDTO(username: username, password: password)
+        loginInteractorProtocol.login(loginDTO)
+    }
+}
+
+
+extension LoginPresenter: LoginInteractorDelegate {
+    
+    func loginInteractorSuccess(loginSession: LoginSession) {
+        
+    }
+    
+    func loginInteractorError(error: NSError) {
+        
+    }
 }

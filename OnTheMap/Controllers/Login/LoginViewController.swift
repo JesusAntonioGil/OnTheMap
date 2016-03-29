@@ -11,6 +11,10 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    
     //Injected
     var presenter: LoginPresenterProtocol!
     
@@ -28,10 +32,36 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    //MARK: ACTIONS
+    
+    @IBAction func onLoginButtonTap(sender: AnyObject) {
+        presenter.login(emailTextField.text!, password: passwordTextField.text!)
+    }
+    
+    @IBAction func onSignUpButtonTap(sender: AnyObject) {
+        
+    }
+    
 
 }
 
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if(textField == emailTextField) {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            view.endEditing(true)
+        }
+        
+        return true
+    }
+}
 
 extension LoginViewController: LoginPresenterDelegate {
     
 }
+
+

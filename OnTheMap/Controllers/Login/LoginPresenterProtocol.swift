@@ -11,4 +11,6 @@ import UIKit
 
 @objc protocol LoginPresenterProtocol {
     var delegate: LoginPresenterDelegate? {get set}
+    
+    func login(username: String, password: String)
 }
