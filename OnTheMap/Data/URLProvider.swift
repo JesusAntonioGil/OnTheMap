@@ -8,8 +8,8 @@
 
 import UIKit
 
-private let kUdacityHost = "https://www.udacity.com/api"
-
+private let kUdacityHost    = "https://www.udacity.com/api"
+private let kParseHost      = "https://api.parse.com/1/classes"
 
 class URLProvider: NSObject {
 
@@ -28,8 +28,9 @@ class URLProvider: NSObject {
     var url: NSURL {
         get {
             switch urlEndpoint {
-                case .Login(_):     return urlWithEndpoint("/session")
-                case .Logout():     return urlWithEndpoint("/session")
+                case .Login(_):                     return urlWithEndpoint(kUdacityHost, endpoint: "/session")
+                case .Logout():                     return urlWithEndpoint(kUdacityHost, endpoint: "/session")
+                case .StudentLocations():           return urlWithEndpoint(kParseHost, endpoint: "/StudentLocation")
             }
         }
     }
@@ -37,8 +38,9 @@ class URLProvider: NSObject {
     var paramenters: [String]! {
         get {
             switch urlEndpoint {
-                case .Login(_):     return nil
-                case .Logout():     return nil
+                case .Login(_):                     return nil
+                case .Logout():                     return nil
+                case .StudentLocations():           return nil
             }
         }
     }
@@ -46,8 +48,9 @@ class URLProvider: NSObject {
     var body: String! {
         get {
             switch urlEndpoint {
-                case .Login(let loginDTO):      return loginDTO.parameters
-                case .Logout():                 return nil
+                case .Login(let loginDTO):          return loginDTO.parameters
+                case .Logout():                     return nil
+                case .StudentLocations():           return nil
             }
         }
     }
@@ -55,8 +58,9 @@ class URLProvider: NSObject {
     var method: String {
         get {
             switch urlEndpoint {
-                case .Login(_):     return "POST"
-                case .Logout():     return "DELETE"
+                case .Login(_):                     return "POST"
+                case .Logout():                     return "DELETE"
+                case .StudentLocations():           return "GET"
             }
         }
     }
@@ -64,8 +68,8 @@ class URLProvider: NSObject {
     
     //MARK: PRIVATE
     
-    private func urlWithEndpoint(endpoint: String) -> NSURL {
-        let urlString = String(format: "%@%@", arguments: [kUdacityHost, endpoint])
+    private func urlWithEndpoint(host: String, endpoint: String) -> NSURL {
+        let urlString = String(format: "%@%@", arguments: [host, endpoint])
         return NSURL(string: urlString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!
     }
     

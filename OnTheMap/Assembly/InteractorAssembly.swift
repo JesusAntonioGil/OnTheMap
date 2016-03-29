@@ -33,4 +33,11 @@ class InteractorAssembly: TyphoonAssembly {
         }
     }
     
+    //MARK: StudentLocationsInteractor
+    internal dynamic func studentLocationsInteractor() -> AnyObject {
+        return TyphoonDefinition.withClass(StudentLocationsInteractor.self) {
+            (definition) in
+                definition.injectProperty("requestClient", with: self.requestClient())
+        }
+    }
 }

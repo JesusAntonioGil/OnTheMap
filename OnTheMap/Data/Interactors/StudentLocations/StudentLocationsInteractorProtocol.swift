@@ -1,5 +1,5 @@
 //
-//  MapPresenterProtocol.swift
+//  StudentLocationsInteractorProtocol.swift
 //  OnTheMap
 //
 //  Created by Jesús Antonio Gil on 29/03/16.
@@ -9,9 +9,8 @@
 import UIKit
 
 
-@objc protocol MapPresenterProtocol {
-    var delegate: MapPresenterDelegate? {get set}
+@objc protocol StudentLocationsInteractorProtocol {
+    var delegate: StudentLocationsInteractorDelegate? {get set}
     
-    func logout()
     func studentLocations()
 }

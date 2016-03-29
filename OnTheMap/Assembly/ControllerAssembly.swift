@@ -70,6 +70,7 @@ class ControllerAssembly: TyphoonAssembly {
         return TyphoonDefinition.withClass(MapPresenter.self) {
             (definition) in
                 definition.injectProperty("logoutInteractorProtocol", with: self.interactorAssembly.logoutInteractor())
+                definition.injectProperty("studentLocationsInteractorProtocol", with: self.interactorAssembly.studentLocationsInteractor())
         }
     }
     

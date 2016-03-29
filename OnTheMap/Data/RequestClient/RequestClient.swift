@@ -23,6 +23,17 @@ class RequestClient: NSObject {
     //MARK: PUBLIC
     
     func request(endpoint: URLEndpoint) {
+        switch endpoint {
+            case .Login(_), .Logout():
+                requestUdacity(endpoint)
+            case .StudentLocations():
+                requestParse(endpoint)
+        }
+    }
+    
+    //MARK: PRIVATE
+    
+    private func requestUdacity(endpoint: URLEndpoint) {
         let target = URLProvider(endpoint: endpoint)
         
         let request = NSMutableURLRequest(URL: urlWithParams(target.url, parameters: target.paramenters))
@@ -69,7 +80,31 @@ class RequestClient: NSObject {
         task.resume()
     }
     
-    //MARK: PRIVATE
+    private func requestParse(endpoint: URLEndpoint) {
+        let target = URLProvider(endpoint: endpoint)
+        let request = NSMutableURLRequest(URL: urlWithParams(target.url, parameters: target.paramenters))
+        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            if (error != nil) {
+                self.delegate?.requestClientError(error!)
+                return
+            }
+    
+            print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+            
+            do {
+                let jsonDict: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSDictionary
+                self.delegate?.requestClientSuccess(jsonDict)
+            } catch {
+                self.delegate?.requestClientError(NSError(domain: "OnTheMap", code: 500, userInfo: [NSLocalizedDescriptionKey: "Error read json"]))
+            }
+            
+        }
+        task.resume()
+    }
     
     private func urlWithParams(url: NSURL, parameters: [String]!) -> NSURL {
         var stringUrl = url.absoluteString

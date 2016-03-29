@@ -24,6 +24,9 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        HUD.show(.Progress)
+        presenter.studentLocations()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,6 +41,7 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func onRefreshButtonTap(sender: AnyObject) {
+        
     }
     
     
@@ -55,6 +59,19 @@ extension MapViewController: MapPresenterDelegate {
     }
     
     func mapPresenterLogoutError(error: NSError) {
+        dispatch_async(dispatch_get_main_queue(),{
+            HUD.show(.Label(error.localizedDescription))
+            HUD.hide(afterDelay: 2.0)
+        })
+    }
+    
+    func mapPresenterStudentLocationsSuccess(studentLocationsResponse: StudentLocationsResponse) {
+        dispatch_async(dispatch_get_main_queue(),{
+            HUD.hide()
+        })
+    }
+    
+    func mapPresenterStudentLocationsError(error: NSError) {
         dispatch_async(dispatch_get_main_queue(),{
             HUD.show(.Label(error.localizedDescription))
             HUD.hide(afterDelay: 2.0)
