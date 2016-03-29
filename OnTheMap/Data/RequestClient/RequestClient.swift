@@ -39,7 +39,18 @@ class RequestClient: NSObject {
             }
             
             let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
-            self.delegate?.requestClientSuccess(newData)
+            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+            do {
+                let jsonDict: NSDictionary = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments) as! NSDictionary
+                if (jsonDict.valueForKey("error") != nil) {
+                    self.delegate?.requestClientError(NSError(domain: "OnTheMap", code: jsonDict.valueForKey("status") as! NSInteger, userInfo: [NSLocalizedDescriptionKey: jsonDict.valueForKey("error")!]))
+                } else {
+                    self.delegate?.requestClientSuccess(jsonDict)
+                }
+            } catch {
+                self.delegate?.requestClientError(NSError(domain: "OnTheMap", code: 500, userInfo: [NSLocalizedDescriptionKey: "Error read json"]))
+            }
+            
         }
         task.resume()
     }
@@ -48,14 +59,22 @@ class RequestClient: NSObject {
     
     private func urlWithParams(url: NSURL, parameters: [String]!) -> NSURL {
         var stringUrl = url.absoluteString
-        for param in parameters {
-            //stringUrl.append("/\(param)")
+        
+        if(parameters != nil) {
+            for param in parameters {
+                stringUrl = stringUrl.stringByAppendingString("/\(param)")
+            }
         }
+        
         return NSURL(string: stringUrl)!
     }
     
-    private func httpBody(body: [String: AnyObject]!) -> NSData? {
-        return body.description.dataUsingEncoding(NSUTF8StringEncoding)
+    private func httpBody(body: String!) -> NSData? {
+        if(body != nil) {
+            return body.dataUsingEncoding(NSUTF8StringEncoding)
+        }
+        
+        return nil
     }
     
 }

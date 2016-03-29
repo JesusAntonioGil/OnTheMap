@@ -16,6 +16,10 @@ private let instantiateControllerSelector: Selector = "instantiateViewController
 
 class ControllerAssembly: TyphoonAssembly {
 
+    //Injected
+    var interactorAssembly: InteractorAssembly!
+    
+    
     //MARK: Storyboards
     
     internal dynamic func storyboard(name: NSString, factory: TyphoonAssembly) -> AnyObject {
@@ -36,11 +40,22 @@ class ControllerAssembly: TyphoonAssembly {
         return TyphoonDefinition.withClass(LoginViewController.self) {
             (definition) in
                 definition.injectProperty("presenter", with: self.loginPresenter())
+                definition.injectProperty("controllerAssembly", with: self)
         }
     }
     
     internal dynamic func loginPresenter() -> AnyObject {
-        return TyphoonDefinition.withClass(LoginPresenter.self)
+        return TyphoonDefinition.withClass(LoginPresenter.self) {
+            (definition) in
+                definition.injectProperty("loginInteractorProtocol", with: self.interactorAssembly.loginInteractor())
+        }
     }
     
+    //MARK: TabBarController
+    
+    internal dynamic func mapTabBarController() -> AnyObject {
+        return TyphoonDefinition.withFactory(storyboard("Main" as NSString, factory: self), selector: instantiateControllerSelector, parameters: { (method) -> Void in
+            method.injectParameterWith("mapTabBarController")
+            }, configuration: nil)
+    }
 }

@@ -41,7 +41,7 @@ class URLProvider: NSObject {
         }
     }
     
-    var body: [String: AnyObject]! {
+    var body: String! {
         get {
             switch urlEndpoint {
                 case .Login(let loginDTO):      return loginDTO.parameters

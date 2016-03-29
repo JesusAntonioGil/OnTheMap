@@ -10,7 +10,8 @@ import UIKit
 
 
 @objc protocol LoginPresenterDelegate {
-    
+    func loginPresenterSuccess()
+    func loginPresenterError(error: NSError)
 }
 
 
@@ -40,10 +41,11 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
 extension LoginPresenter: LoginInteractorDelegate {
     
     func loginInteractorSuccess(loginSession: LoginSession) {
-        
+        VolatileStorage.shared.loginSession = loginSession
+        delegate?.loginPresenterSuccess()
     }
     
     func loginInteractorError(error: NSError) {
-        
+        delegate?.loginPresenterError(error)
     }
 }

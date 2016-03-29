@@ -20,11 +20,8 @@ class LoginDTO: NSObject {
         self.password = password
     }
     
-    var parameters: [String: AnyObject] {
-        return ["udacity":[
-            "username": username,
-            "password": password]
-        ]
+    var parameters: String {
+        return "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
     }
     
 }

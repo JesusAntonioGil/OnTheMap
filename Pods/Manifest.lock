@@ -1,15 +1,18 @@
 PODS:
   - ObjectMapper (1.2.0)
+  - PKHUD (3.1.0)
   - Typhoon (3.4.5):
     - Typhoon/no-arc (= 3.4.5)
   - Typhoon/no-arc (3.4.5)
 
 DEPENDENCIES:
   - ObjectMapper
+  - PKHUD
   - Typhoon
 
 SPEC CHECKSUMS:
   ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
+  PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
   Typhoon: 200100687af3233ec5ed019064df3c9ffe350475
 
 COCOAPODS: 0.39.0

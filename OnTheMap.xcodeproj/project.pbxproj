@@ -15,6 +15,7 @@
 		0B53B8621CAA606C007A30AD /* LoginSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53B8611CAA606C007A30AD /* LoginSession.swift */; };
 		0B53B8651CAA615D007A30AD /* MapperHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53B8641CAA615D007A30AD /* MapperHelper.swift */; };
 		0B53B8671CAA6293007A30AD /* HelperAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53B8661CAA6293007A30AD /* HelperAssembly.swift */; };
+		0B5D462A1CAA77D800BCF201 /* VolatileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D46291CAA77D800BCF201 /* VolatileStorage.swift */; };
 		0B5FE5811CA9676C003624FB /* RequestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FE5801CA9676C003624FB /* RequestClient.swift */; };
 		0B5FE5851CA968A6003624FB /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FE5841CA968A6003624FB /* LoginDTO.swift */; };
 		0B5FE5871CA9695D003624FB /* URLEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FE5861CA9695D003624FB /* URLEndpoint.swift */; };
@@ -39,6 +40,7 @@
 		0B53B8611CAA606C007A30AD /* LoginSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSession.swift; sourceTree = "<group>"; };
 		0B53B8641CAA615D007A30AD /* MapperHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapperHelper.swift; sourceTree = "<group>"; };
 		0B53B8661CAA6293007A30AD /* HelperAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperAssembly.swift; sourceTree = "<group>"; };
+		0B5D46291CAA77D800BCF201 /* VolatileStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolatileStorage.swift; sourceTree = "<group>"; };
 		0B5FE5801CA9676C003624FB /* RequestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestClient.swift; sourceTree = "<group>"; };
 		0B5FE5841CA968A6003624FB /* LoginDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
 		0B5FE5861CA9695D003624FB /* URLEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEndpoint.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				0B53B8611CAA606C007A30AD /* LoginSession.swift */,
 				0B53B85F1CAA6018007A30AD /* Account.swift */,
 				0B53B85D1CAA5EFB007A30AD /* Session.swift */,
+				0B5D46291CAA77D800BCF201 /* VolatileStorage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				0BA5623F1CA9096F009904C1 /* AppDelegate.swift in Sources */,
 				0B53B85E1CAA5EFB007A30AD /* Session.swift in Sources */,
 				0BA562541CA95387009904C1 /* ControllerAssembly.swift in Sources */,
+				0B5D462A1CAA77D800BCF201 /* VolatileStorage.swift in Sources */,
 				0B53B8571CAA58B5007A30AD /* LoginInteractor.swift in Sources */,
 				0B53B8591CAA58C0007A30AD /* LoginInteractorProtocol.swift in Sources */,
 				0B53B85B1CAA5A10007A30AD /* InteractorAssembly.swift in Sources */,
