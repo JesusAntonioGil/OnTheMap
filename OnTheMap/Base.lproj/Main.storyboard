@@ -118,6 +118,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="E5k-ij-UY0">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <connections>
+                                    <outlet property="delegate" destination="7BD-Vw-Dm8" id="vcU-Qt-1JF"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -135,7 +138,7 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem style="done" systemItem="refresh" id="N9O-6C-jLf">
+                            <barButtonItem enabled="NO" style="done" systemItem="refresh" id="N9O-6C-jLf">
                                 <connections>
                                     <action selector="onRefreshButtonTap:" destination="7BD-Vw-Dm8" id="cJw-kD-U8Y"/>
                                 </connections>
@@ -145,6 +148,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="E5k-ij-UY0" id="OOn-gW-HCi"/>
+                        <outlet property="refreshButton" destination="N9O-6C-jLf" id="vho-MN-ac5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1a6-HN-ev4" userLabel="First Responder" sceneMemberID="firstResponder"/>

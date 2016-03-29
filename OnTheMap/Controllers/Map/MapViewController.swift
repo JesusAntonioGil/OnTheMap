@@ -14,10 +14,13 @@ import MapKit
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     
     
     //Injected
     var presenter: MapPresenterProtocol!
+    
+    var studentLocations: [StudentLocation]!
     
     
     //MARK: LIFE CYCLE
@@ -45,12 +48,16 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func onRefreshButtonTap(sender: AnyObject) {
-        
+        self.refreshButton.enabled = false
+        HUD.show(.Progress)
+        presenter.studentLocations()
     }
     
     //MARK: PRIVATE
     
     private func addStudentAnnotations(studentLocations: [StudentLocation]) {
+        mapView.removeAnnotations(mapView.annotations)
+        
         for studentLocation in studentLocations {
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: Double(studentLocation.latitude), longitude: Double(studentLocation.longitude))
@@ -83,6 +90,7 @@ extension MapViewController: MapPresenterDelegate {
         dispatch_async(dispatch_get_main_queue(),{
             HUD.hide()
             self.addStudentAnnotations(studentLocationsResponse.locations)
+            self.refreshButton.enabled = true
         })
     }
     
@@ -94,6 +102,30 @@ extension MapViewController: MapPresenterDelegate {
     }
 }
 
+
+extension MapViewController: MKMapViewDelegate {
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier("pin") as? MKPinAnnotationView
+        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        pinView!.canShowCallout = true
+        pinView!.rightCalloutAccessoryView = UIButton(type: .InfoLight)
+        return pinView
+    }
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if let requestUrl = NSURL(string: ((view.annotation?.subtitle)!)!) {
+            if UIApplication.sharedApplication().canOpenURL(requestUrl) {
+                UIApplication.sharedApplication().openURL(requestUrl)
+            }
+            else {
+                HUD.show(.Label("Invalid link"))
+                HUD.hide(afterDelay: 2.0)
+            }
+        }
+    }
+    
+}
 
 
 
