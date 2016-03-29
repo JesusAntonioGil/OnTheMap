@@ -25,17 +25,11 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     var mapperHelper = MapperHelper()
     
     
-    //MARK: LIFE CYCLE
-    
-    override func typhoonDidInject() {
-        requestClient.delegate = self
-        mapperHelper.delegate = self
-    }
-    
     //MARK: PUBLIC
     
     func login(loginDTO: LoginDTO) {
         let endpoint: URLEndpoint = .Login(loginDTO: loginDTO)
+        requestClient.delegate = self
         requestClient.request(endpoint)
     }
 }
@@ -44,6 +38,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
 extension LoginInteractor: RequestClientDelegate {
     
     func requestClientSuccess(data: AnyObject) {
+        mapperHelper.delegate = self
         mapperHelper.mapperResponse(data, transform: {Mapper<LoginSession>().map($0)})
     }
     

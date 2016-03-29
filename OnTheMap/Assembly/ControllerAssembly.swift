@@ -74,4 +74,12 @@ class ControllerAssembly: TyphoonAssembly {
         }
     }
     
+    internal dynamic func listViewController() -> AnyObject {
+        return TyphoonDefinition.withClass(ListViewController.self) {
+            (definition) in
+                definition.injectProperty("presenter", with: self.mapPresenter())
+        }
+
+    }
+    
 }

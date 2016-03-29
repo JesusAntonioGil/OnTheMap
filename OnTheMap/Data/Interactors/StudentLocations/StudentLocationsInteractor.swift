@@ -25,17 +25,11 @@ class StudentLocationsInteractor: NSObject, StudentLocationsInteractorProtocol {
     var mapperHelper = MapperHelper()
     
     
-    //MARK: LIFE CYCLE
-    
-    override func typhoonDidInject() {
-        requestClient.delegate = self
-        mapperHelper.delegate = self
-    }
-    
     //MARK: PUBLIC
     
     func studentLocations() {
         let endpoint: URLEndpoint = .StudentLocations()
+        requestClient.delegate = self
         requestClient.request(endpoint)
     }
 
@@ -45,6 +39,7 @@ class StudentLocationsInteractor: NSObject, StudentLocationsInteractorProtocol {
 extension StudentLocationsInteractor: RequestClientDelegate {
     
     func requestClientSuccess(data: AnyObject) {
+        mapperHelper.delegate = self
         mapperHelper.mapperResponse(data, transform: {Mapper<StudentLocationsResponse>().map($0)})
     }
     

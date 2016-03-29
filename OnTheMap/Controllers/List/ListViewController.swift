@@ -1,5 +1,5 @@
 //
-//  MapViewController.swift
+//  ListViewController.swift
 //  OnTheMap
 //
 //  Created by Jesús Antonio Gil on 29/03/16.
@@ -8,17 +8,17 @@
 
 import UIKit
 import PKHUD
-import MapKit
 
 
-class MapViewController: UIViewController {
+class ListViewController: UIViewController {
 
-    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
-    
+    @IBOutlet weak var tableView: UITableView!
     
     //Injected
     var presenter: MapPresenterProtocol!
+    
+    var studentLocations: [StudentLocation]!
     
     
     //MARK: LIFE CYCLE
@@ -48,24 +48,10 @@ class MapViewController: UIViewController {
         presenter.studentLocations()
     }
     
-    //MARK: PRIVATE
-    
-    private func addStudentAnnotations(studentLocations: [StudentLocation]) {
-        mapView.removeAnnotations(mapView.annotations)
-        
-        for studentLocation in studentLocations {
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: Double(studentLocation.latitude), longitude: Double(studentLocation.longitude))
-            annotation.title = studentLocation.firstName + " " + studentLocation.lastName
-            annotation.subtitle = studentLocation.mediaURL
-            mapView.addAnnotation(annotation)
-        }
-    }
-    
 }
 
 
-extension MapViewController: MapPresenterDelegate {
+extension ListViewController: MapPresenterDelegate {
     
     func mapPresenterLogoutSuccess() {
         dispatch_async(dispatch_get_main_queue(),{
@@ -84,7 +70,8 @@ extension MapViewController: MapPresenterDelegate {
     func mapPresenterStudentLocationsSuccess(studentLocationsResponse: StudentLocationsResponse) {
         dispatch_async(dispatch_get_main_queue(),{
             HUD.hide()
-            self.addStudentAnnotations(studentLocationsResponse.locations)
+            self.studentLocations = studentLocationsResponse.locations
+            self.tableView.reloadData()
             self.refreshButton.enabled = true
         })
     }
@@ -95,21 +82,37 @@ extension MapViewController: MapPresenterDelegate {
             HUD.hide(afterDelay: 2.0)
         })
     }
+    
 }
 
+extension ListViewController: UITableViewDelegate {
+ 
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 50.0
+    }
+}
 
-extension MapViewController: MKMapViewDelegate {
+extension ListViewController: UITableViewDataSource {
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier("pin") as? MKPinAnnotationView
-        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-        pinView!.canShowCallout = true
-        pinView!.rightCalloutAccessoryView = UIButton(type: .InfoLight)
-        return pinView
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(studentLocations != nil) {
+            return studentLocations.count
+        }
+        return 0
     }
     
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if let requestUrl = NSURL(string: ((view.annotation?.subtitle)!)!) {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell.init(style: .Subtitle, reuseIdentifier: "cell")
+        cell.textLabel?.text = studentLocations[indexPath.row].firstName + " " + studentLocations[indexPath.row].lastName
+        cell.detailTextLabel?.text = studentLocations[indexPath.row].mediaURL
+        cell.imageView?.image = UIImage(named: "poi")
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        if let requestUrl = NSURL(string: studentLocations[indexPath.row].mediaURL) {
             if UIApplication.sharedApplication().canOpenURL(requestUrl) {
                 UIApplication.sharedApplication().openURL(requestUrl)
             }
@@ -119,8 +122,4 @@ extension MapViewController: MKMapViewDelegate {
             }
         }
     }
-    
 }
-
-
-

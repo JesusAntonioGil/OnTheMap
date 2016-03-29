@@ -25,17 +25,11 @@ class LogoutInteractor: NSObject, LogoutInteractorProtocol {
     var mapperHelper = MapperHelper()
     
     
-    //MARK: LIFE CYCLE
-    
-    override func typhoonDidInject() {
-        requestClient.delegate = self
-        mapperHelper.delegate = self
-    }
-    
     //MARK: PUBLIC
     
     func logout() {
         let endpoint: URLEndpoint = .Logout()
+        requestClient.delegate = self
         requestClient.request(endpoint)
     }
 
@@ -45,6 +39,7 @@ class LogoutInteractor: NSObject, LogoutInteractorProtocol {
 extension LogoutInteractor: RequestClientDelegate {
     
     func requestClientSuccess(data: AnyObject) {
+        mapperHelper.delegate = self
         mapperHelper.mapperResponse(data, transform: {Mapper<LogoutSession>().map($0)})
     }
     

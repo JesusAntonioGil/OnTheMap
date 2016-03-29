@@ -3,10 +3,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--On The Map-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -94,7 +93,7 @@
                             <constraint firstAttribute="trailing" secondItem="zFW-KE-IGj" secondAttribute="trailing" constant="20" id="zUh-9J-hQj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Tb5-7Z-KR3"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="Tb5-7Z-KR3"/>
                     <connections>
                         <outlet property="emailTextField" destination="Khu-LZ-w25" id="Qyw-TS-6hS"/>
                         <outlet property="passwordTextField" destination="qYd-cc-WDa" id="TCI-K1-iuu"/>
@@ -104,7 +103,7 @@
             </objects>
             <point key="canvasLocation" x="1412" y="479"/>
         </scene>
-        <!--Map View Controller-->
+        <!--On The Map-->
         <scene sceneID="Sqz-Km-rag">
             <objects>
                 <viewController storyboardIdentifier="MapViewController" id="7BD-Vw-Dm8" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,11 +112,11 @@
                         <viewControllerLayoutGuide type="bottom" id="15g-Em-p11"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="z8G-IP-VB6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="E5k-ij-UY0">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <connections>
                                     <outlet property="delegate" destination="7BD-Vw-Dm8" id="vcU-Qt-1JF"/>
                                 </connections>
@@ -131,20 +130,19 @@
                             <constraint firstItem="E5k-ij-UY0" firstAttribute="top" secondItem="3lS-F0-9tN" secondAttribute="bottom" id="hwN-SF-spF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="1Zj-LG-F2v">
+                    <navigationItem key="navigationItem" title="On The Map" id="1Zj-LG-F2v">
                         <barButtonItem key="leftBarButtonItem" title="Logout" style="done" id="WXt-an-5ff">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onLogoutButtonTap:" destination="7BD-Vw-Dm8" id="ndd-jl-UqO"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem enabled="NO" style="done" systemItem="refresh" id="N9O-6C-jLf">
-                                <connections>
-                                    <action selector="onRefreshButtonTap:" destination="7BD-Vw-Dm8" id="cJw-kD-U8Y"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem style="done" systemItem="compose" id="w88-fJ-mle"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="refresh" id="N9O-6C-jLf">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onRefreshButtonTap:" destination="7BD-Vw-Dm8" id="cJw-kD-U8Y"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="E5k-ij-UY0" id="OOn-gW-HCi"/>
@@ -155,20 +153,53 @@
             </objects>
             <point key="canvasLocation" x="2224" y="1364"/>
         </scene>
-        <!--View Controller-->
+        <!--On The Map-->
         <scene sceneID="d0N-Lm-fEK">
             <objects>
-                <viewController id="lyM-uL-tVm" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListViewController" id="lyM-uL-tVm" customClass="ListViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cJW-gJ-Sp5"/>
                         <viewControllerLayoutGuide type="bottom" id="EKQ-Ac-V93"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yye-aK-0MX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KLR-3C-gKC">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="lyM-uL-tVm" id="wSf-rs-SBD"/>
+                                    <outlet property="delegate" destination="lyM-uL-tVm" id="w2I-ZN-MFy"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KLR-3C-gKC" firstAttribute="leading" secondItem="yye-aK-0MX" secondAttribute="leading" id="Etr-AG-bYg"/>
+                            <constraint firstItem="KLR-3C-gKC" firstAttribute="top" secondItem="cJW-gJ-Sp5" secondAttribute="bottom" id="HJz-jo-BZl"/>
+                            <constraint firstItem="EKQ-Ac-V93" firstAttribute="top" secondItem="KLR-3C-gKC" secondAttribute="bottom" id="Z0I-Lv-urd"/>
+                            <constraint firstAttribute="trailing" secondItem="KLR-3C-gKC" secondAttribute="trailing" id="iDh-MZ-Y6B"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="nph-6v-inY"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="nph-6v-inY">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" style="done" id="XZ0-Pf-BKm">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onLogoutButtonTap:" destination="lyM-uL-tVm" id="Qqk-df-8b0"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="refresh" id="vMK-Ze-9T7">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onRefreshButtonTap:" destination="lyM-uL-tVm" id="DQm-HG-0mC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="refreshButton" destination="vMK-Ze-9T7" id="LuC-fX-Tch"/>
+                        <outlet property="tableView" destination="KLR-3C-gKC" id="lh7-Zl-Dts"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dW9-6u-3KN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -200,6 +231,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="hfE-mi-0sd">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="KeB-w6-0qH" kind="relationship" relationship="viewControllers" id="GzX-5p-xWJ"/>
@@ -214,9 +246,9 @@
         <scene sceneID="ySm-3E-NVv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KeB-w6-0qH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="jzv-Ok-5mi"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map_tabBar" selectedImage="map_tabBar" id="jzv-Ok-5mi"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gl0-p6-qVy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Gl0-p6-qVy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -233,9 +265,9 @@
         <scene sceneID="ebG-yP-p6B">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eAh-wS-kkg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" id="vE4-3a-1YO"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list_tabBar" id="vE4-3a-1YO"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jJd-p2-IM6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jJd-p2-IM6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -249,4 +281,8 @@
             <point key="canvasLocation" x="1412" y="2100"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="list_tabBar" width="45" height="32"/>
+        <image name="map_tabBar" width="32" height="32"/>
+    </resources>
 </document>
