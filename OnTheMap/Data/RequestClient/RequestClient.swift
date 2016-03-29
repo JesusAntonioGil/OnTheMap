@@ -26,10 +26,24 @@ class RequestClient: NSObject {
         let target = URLProvider(endpoint: endpoint)
         
         let request = NSMutableURLRequest(URL: urlWithParams(target.url, parameters: target.paramenters))
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPBody = httpBody(target.body)
         request.HTTPMethod = target.method
+        if(target.method != "DELETE") {
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.HTTPBody = httpBody(target.body)
+        } else {
+            let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+            var xsrfCookie: NSHTTPCookie? = nil
+            for cookie in sharedCookieStorage.cookies! {
+                if cookie.name == "XSRF-TOKEN" {
+                    xsrfCookie = cookie
+                }
+            }
+            if let xsrfCookie = xsrfCookie {
+                request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+            }
+        }
+        
         
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { (data, response, error) in

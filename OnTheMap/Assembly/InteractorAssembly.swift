@@ -13,13 +13,11 @@ import Typhoon
 class InteractorAssembly: TyphoonAssembly {
     
     //MARK: RequestClient
-    
     internal dynamic func requestClient() -> AnyObject {
         return TyphoonDefinition.withClass(RequestClient.self)
     }
     
     //MARK: LoginInteractor
-    
     internal dynamic func loginInteractor() -> AnyObject {
         return TyphoonDefinition.withClass(LoginInteractor.self) {
             (definition) in
@@ -27,4 +25,12 @@ class InteractorAssembly: TyphoonAssembly {
         }
     }
 
+    //MARK: LogoutInteractor
+    internal dynamic func logoutInteractor() -> AnyObject {
+        return TyphoonDefinition.withClass(LogoutInteractor.self) {
+            (definition) in
+                definition.injectProperty("requestClient", with: self.requestClient())
+        }
+    }
+    
 }

@@ -16,6 +16,13 @@
 		0B53B8651CAA615D007A30AD /* MapperHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53B8641CAA615D007A30AD /* MapperHelper.swift */; };
 		0B53B8671CAA6293007A30AD /* HelperAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53B8661CAA6293007A30AD /* HelperAssembly.swift */; };
 		0B5D462A1CAA77D800BCF201 /* VolatileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D46291CAA77D800BCF201 /* VolatileStorage.swift */; };
+		0B5D462F1CAA87A900BCF201 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D462E1CAA87A900BCF201 /* MapViewController.swift */; };
+		0B5D46311CAA87B700BCF201 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D46301CAA87B700BCF201 /* MapPresenter.swift */; };
+		0B5D46331CAA87BF00BCF201 /* MapPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D46321CAA87BF00BCF201 /* MapPresenterProtocol.swift */; };
+		0B5D46361CAA89A800BCF201 /* LogoutInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D46351CAA89A800BCF201 /* LogoutInteractor.swift */; };
+		0B5D46381CAA89B100BCF201 /* LogoutInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D46371CAA89B100BCF201 /* LogoutInteractorProtocol.swift */; };
+		0B5D463A1CAA91A400BCF201 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B5D46391CAA91A400BCF201 /* MapKit.framework */; };
+		0B5D463C1CAA938300BCF201 /* LogoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D463B1CAA938300BCF201 /* LogoutSession.swift */; };
 		0B5FE5811CA9676C003624FB /* RequestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FE5801CA9676C003624FB /* RequestClient.swift */; };
 		0B5FE5851CA968A6003624FB /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FE5841CA968A6003624FB /* LoginDTO.swift */; };
 		0B5FE5871CA9695D003624FB /* URLEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FE5861CA9695D003624FB /* URLEndpoint.swift */; };
@@ -41,6 +48,13 @@
 		0B53B8641CAA615D007A30AD /* MapperHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapperHelper.swift; sourceTree = "<group>"; };
 		0B53B8661CAA6293007A30AD /* HelperAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperAssembly.swift; sourceTree = "<group>"; };
 		0B5D46291CAA77D800BCF201 /* VolatileStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolatileStorage.swift; sourceTree = "<group>"; };
+		0B5D462E1CAA87A900BCF201 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0B5D46301CAA87B700BCF201 /* MapPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+		0B5D46321CAA87BF00BCF201 /* MapPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPresenterProtocol.swift; sourceTree = "<group>"; };
+		0B5D46351CAA89A800BCF201 /* LogoutInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutInteractor.swift; sourceTree = "<group>"; };
+		0B5D46371CAA89B100BCF201 /* LogoutInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutInteractorProtocol.swift; sourceTree = "<group>"; };
+		0B5D46391CAA91A400BCF201 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0B5D463B1CAA938300BCF201 /* LogoutSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutSession.swift; sourceTree = "<group>"; };
 		0B5FE5801CA9676C003624FB /* RequestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestClient.swift; sourceTree = "<group>"; };
 		0B5FE5841CA968A6003624FB /* LoginDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
 		0B5FE5861CA9695D003624FB /* URLEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEndpoint.swift; sourceTree = "<group>"; };
@@ -65,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B5D463A1CAA91A400BCF201 /* MapKit.framework in Frameworks */,
 				8C9C690063A474B5F338AD3E /* Pods_OnTheMap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				0B53B8551CAA58AA007A30AD /* Login */,
+				0B5D46341CAA899B00BCF201 /* Logout */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -93,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				0B53B8611CAA606C007A30AD /* LoginSession.swift */,
+				0B5D463B1CAA938300BCF201 /* LogoutSession.swift */,
 				0B53B85F1CAA6018007A30AD /* Account.swift */,
 				0B53B85D1CAA5EFB007A30AD /* Session.swift */,
 				0B5D46291CAA77D800BCF201 /* VolatileStorage.swift */,
@@ -106,6 +123,25 @@
 				0B53B8641CAA615D007A30AD /* MapperHelper.swift */,
 			);
 			path = MapperHelper;
+			sourceTree = "<group>";
+		};
+		0B5D462B1CAA878000BCF201 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				0B5D462E1CAA87A900BCF201 /* MapViewController.swift */,
+				0B5D46301CAA87B700BCF201 /* MapPresenter.swift */,
+				0B5D46321CAA87BF00BCF201 /* MapPresenterProtocol.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		0B5D46341CAA899B00BCF201 /* Logout */ = {
+			isa = PBXGroup;
+			children = (
+				0B5D46351CAA89A800BCF201 /* LogoutInteractor.swift */,
+				0B5D46371CAA89B100BCF201 /* LogoutInteractorProtocol.swift */,
+			);
+			path = Logout;
 			sourceTree = "<group>";
 		};
 		0B5FE57C1CA964C4003624FB /* Helpers */ = {
@@ -193,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				0BA562561CA95421009904C1 /* Login */,
+				0B5D462B1CAA878000BCF201 /* Map */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -219,6 +256,7 @@
 		7CC84DC30E089BA1D934484F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B5D46391CAA91A400BCF201 /* MapKit.framework */,
 				129F4658FAD0D703BF3A05FF /* Pods_OnTheMap.framework */,
 			);
 			name = Frameworks;
@@ -348,17 +386,23 @@
 			files = (
 				0B53B8671CAA6293007A30AD /* HelperAssembly.swift in Sources */,
 				0BA5625C1CA9545C009904C1 /* LoginPresenterProtocol.swift in Sources */,
+				0B5D46361CAA89A800BCF201 /* LogoutInteractor.swift in Sources */,
+				0B5D46331CAA87BF00BCF201 /* MapPresenterProtocol.swift in Sources */,
 				0B5FE5851CA968A6003624FB /* LoginDTO.swift in Sources */,
 				0B53B8651CAA615D007A30AD /* MapperHelper.swift in Sources */,
 				0B5FE5891CA969AD003624FB /* URLProvider.swift in Sources */,
 				0BA5625A1CA95451009904C1 /* LoginPresenter.swift in Sources */,
 				0B5FE5811CA9676C003624FB /* RequestClient.swift in Sources */,
+				0B5D46311CAA87B700BCF201 /* MapPresenter.swift in Sources */,
+				0B5D462F1CAA87A900BCF201 /* MapViewController.swift in Sources */,
 				0BA562581CA95433009904C1 /* LoginViewController.swift in Sources */,
+				0B5D463C1CAA938300BCF201 /* LogoutSession.swift in Sources */,
 				0BA5623F1CA9096F009904C1 /* AppDelegate.swift in Sources */,
 				0B53B85E1CAA5EFB007A30AD /* Session.swift in Sources */,
 				0BA562541CA95387009904C1 /* ControllerAssembly.swift in Sources */,
 				0B5D462A1CAA77D800BCF201 /* VolatileStorage.swift in Sources */,
 				0B53B8571CAA58B5007A30AD /* LoginInteractor.swift in Sources */,
+				0B5D46381CAA89B100BCF201 /* LogoutInteractorProtocol.swift in Sources */,
 				0B53B8591CAA58C0007A30AD /* LoginInteractorProtocol.swift in Sources */,
 				0B53B85B1CAA5A10007A30AD /* InteractorAssembly.swift in Sources */,
 				0B5FE5871CA9695D003624FB /* URLEndpoint.swift in Sources */,

@@ -42,7 +42,6 @@ class LoginViewController: UIViewController {
     
     @IBAction func onLoginButtonTap(sender: AnyObject) {
         HUD.show(.Progress)
-        
         presenter.login(emailTextField.text!, password: passwordTextField.text!)
     }
     

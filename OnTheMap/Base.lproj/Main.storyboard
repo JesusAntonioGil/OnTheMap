@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -26,7 +27,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Khu-LZ-w25">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="jesus.a22@hotmail.com" placeholder=" Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Khu-LZ-w25">
                                 <rect key="frame" x="20" y="113" width="560" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -38,7 +39,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="LVr-fo-8kD"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qYd-cc-WDa">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="cuentaUdacity" placeholder=" Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qYd-cc-WDa">
                                 <rect key="frame" x="20" y="151" width="560" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -103,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="1412" y="479"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="Sqz-Km-rag">
             <objects>
-                <viewController id="7BD-Vw-Dm8" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="7BD-Vw-Dm8" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3lS-F0-9tN"/>
                         <viewControllerLayoutGuide type="bottom" id="15g-Em-p11"/>
@@ -114,9 +115,34 @@
                     <view key="view" contentMode="scaleToFill" id="z8G-IP-VB6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="E5k-ij-UY0">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="E5k-ij-UY0" secondAttribute="trailing" id="NYe-O7-uBt"/>
+                            <constraint firstItem="15g-Em-p11" firstAttribute="top" secondItem="E5k-ij-UY0" secondAttribute="bottom" id="Qfi-qw-jt1"/>
+                            <constraint firstItem="E5k-ij-UY0" firstAttribute="leading" secondItem="z8G-IP-VB6" secondAttribute="leading" id="f79-6v-stn"/>
+                            <constraint firstItem="E5k-ij-UY0" firstAttribute="top" secondItem="3lS-F0-9tN" secondAttribute="bottom" id="hwN-SF-spF"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="1Zj-LG-F2v"/>
+                    <navigationItem key="navigationItem" id="1Zj-LG-F2v">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" style="done" id="WXt-an-5ff">
+                            <connections>
+                                <action selector="onLogoutButtonTap:" destination="7BD-Vw-Dm8" id="ndd-jl-UqO"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="done" systemItem="refresh" id="N9O-6C-jLf">
+                                <connections>
+                                    <action selector="onRefreshButtonTap:" destination="7BD-Vw-Dm8" id="cJw-kD-U8Y"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="done" systemItem="compose" id="w88-fJ-mle"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1a6-HN-ev4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

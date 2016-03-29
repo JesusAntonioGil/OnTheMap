@@ -58,4 +58,19 @@ class ControllerAssembly: TyphoonAssembly {
             method.injectParameterWith("mapTabBarController")
             }, configuration: nil)
     }
+    
+    internal dynamic func mapViewController() -> AnyObject {
+        return TyphoonDefinition.withClass(MapViewController.self) {
+            (definition) in
+                definition.injectProperty("presenter", with: self.mapPresenter())
+        }
+    }
+    
+    internal dynamic func mapPresenter() -> AnyObject {
+        return TyphoonDefinition.withClass(MapPresenter.self) {
+            (definition) in
+                definition.injectProperty("logoutInteractorProtocol", with: self.interactorAssembly.logoutInteractor())
+        }
+    }
+    
 }

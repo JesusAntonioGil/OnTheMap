@@ -12,4 +12,5 @@ import UIKit
 enum URLEndpoint {
 
     case Login(loginDTO: LoginDTO)
+    case Logout()
 }

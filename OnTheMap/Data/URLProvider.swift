@@ -29,6 +29,7 @@ class URLProvider: NSObject {
         get {
             switch urlEndpoint {
                 case .Login(_):     return urlWithEndpoint("/session")
+                case .Logout():     return urlWithEndpoint("/session")
             }
         }
     }
@@ -37,6 +38,7 @@ class URLProvider: NSObject {
         get {
             switch urlEndpoint {
                 case .Login(_):     return nil
+                case .Logout():     return nil
             }
         }
     }
@@ -45,7 +47,7 @@ class URLProvider: NSObject {
         get {
             switch urlEndpoint {
                 case .Login(let loginDTO):      return loginDTO.parameters
-                
+                case .Logout():                 return nil
             }
         }
     }
@@ -54,6 +56,7 @@ class URLProvider: NSObject {
         get {
             switch urlEndpoint {
                 case .Login(_):     return "POST"
+                case .Logout():     return "DELETE"
             }
         }
     }
