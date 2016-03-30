@@ -12,7 +12,7 @@ import ObjectMapper
 
 final class StudentLocation: NSObject {
 
-    var createdAt: NSDate!
+    var createdAt: String!
     var firstName: String!
     var lastName: String!
     var latitude: Float!
@@ -21,7 +21,7 @@ final class StudentLocation: NSObject {
     var mediaURL: String!
     var objectId: String!
     var uniqueKey: String!
-    var updatedAt: NSDate!
+    var updatedAt: String!
 }
 
 
@@ -96,7 +96,12 @@ struct StudentLocationStruct {
     
     
     init(dictionary: [String: AnyObject]) {
-        if(dictionary["createdAt"] != nil) { createdAt = dictionary["createdAt"] as! NSDate }
+        if(dictionary["createdAt"] != nil) {
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let index = (dictionary["createdAt"] as! String).startIndex.advancedBy(10)
+            createdAt = dateFormatter.dateFromString((dictionary["createdAt"] as! String).substringToIndex(index))
+        }
         if(dictionary["firstName"] != nil) {firstName = dictionary["firstName"] as! String }
         if(dictionary["lastName"] != nil) { lastName = dictionary["lastName"] as! String }
         if(dictionary["latitude"] != nil) { latitude = dictionary["latitude"] as! Float }
@@ -105,6 +110,10 @@ struct StudentLocationStruct {
         if(dictionary["mediaURL"] != nil) { mediaURL = dictionary["mediaURL"] as! String }
         if(dictionary["objectId"] != nil) { objectId = dictionary["objectId"] as! String }
         if(dictionary["uniqueKey"] != nil) { uniqueKey = dictionary["uniqueKey"] as! String }
-        if(dictionary["updatedAt"] != nil) { updatedAt = dictionary["updatedAt"] as! NSDate }
+        if(dictionary["updatedAt"] != nil) {
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let index = (dictionary["updatedAt"] as! String).startIndex.advancedBy(10)
+            updatedAt = dateFormatter.dateFromString((dictionary["updatedAt"] as! String).substringToIndex(index))        }
     }
 }

@@ -97,7 +97,11 @@ class RequestClient: NSObject {
             
             do {
                 let jsonDict: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSDictionary
-                self.delegate?.requestClientSuccess(jsonDict)
+                if (jsonDict.valueForKey("error") != nil) {
+                    self.delegate?.requestClientError(NSError(domain: "OnTheMap", code: 900 , userInfo: [NSLocalizedDescriptionKey: jsonDict.valueForKey("error")!]))
+                } else {
+                    self.delegate?.requestClientSuccess(jsonDict)
+                }
             } catch {
                 self.delegate?.requestClientError(NSError(domain: "OnTheMap", code: 500, userInfo: [NSLocalizedDescriptionKey: "Error read json"]))
             }

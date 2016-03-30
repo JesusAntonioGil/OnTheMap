@@ -67,6 +67,8 @@ extension MapPresenter: StudentLocationsInteractorDelegate {
             locationsArray.append(structLocation)
         }
         
+        locationsArray.sortInPlace({ $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedAscending })
+        
         delegate?.mapPresenterStudentLocationsSuccess(locationsArray)
     }
     
