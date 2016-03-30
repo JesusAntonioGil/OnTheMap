@@ -16,9 +16,9 @@ class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     //Injected
-    var presenter: MapPresenterProtocol!
+    var presenter: MapPresenter!
     
-    var studentLocations: [StudentLocation]!
+    var studentLocations: [StudentLocationStruct]!
     
     
     //MARK: LIFE CYCLE
@@ -67,10 +67,10 @@ extension ListViewController: MapPresenterDelegate {
         })
     }
     
-    func mapPresenterStudentLocationsSuccess(studentLocationsResponse: StudentLocationsResponse) {
+    func mapPresenterStudentLocationsSuccess(studentLocations: [StudentLocationStruct]) {
         dispatch_async(dispatch_get_main_queue(),{
             HUD.hide()
-            self.studentLocations = studentLocationsResponse.locations
+            self.studentLocations = studentLocations
             self.tableView.reloadData()
             self.refreshButton.enabled = true
         })

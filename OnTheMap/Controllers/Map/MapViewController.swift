@@ -18,8 +18,9 @@ class MapViewController: UIViewController {
     
     
     //Injected
-    var presenter: MapPresenterProtocol!
+    var presenter: MapPresenter!
     
+    var locations: [StudentLocationStruct]!
     
     //MARK: LIFE CYCLE
     
@@ -50,10 +51,10 @@ class MapViewController: UIViewController {
     
     //MARK: PRIVATE
     
-    private func addStudentAnnotations(studentLocations: [StudentLocation]) {
+    private func addStudentAnnotations() {
         mapView.removeAnnotations(mapView.annotations)
         
-        for studentLocation in studentLocations {
+        for studentLocation in locations {
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: Double(studentLocation.latitude), longitude: Double(studentLocation.longitude))
             annotation.title = studentLocation.firstName + " " + studentLocation.lastName
@@ -81,10 +82,11 @@ extension MapViewController: MapPresenterDelegate {
         })
     }
     
-    func mapPresenterStudentLocationsSuccess(studentLocationsResponse: StudentLocationsResponse) {
+    func mapPresenterStudentLocationsSuccess(studentLocations: [StudentLocationStruct]) {
         dispatch_async(dispatch_get_main_queue(),{
             HUD.hide()
-            self.addStudentAnnotations(studentLocationsResponse.locations)
+            self.locations = studentLocations
+            self.addStudentAnnotations()
             self.refreshButton.enabled = true
         })
     }

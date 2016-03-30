@@ -15,10 +15,8 @@
 		0B53B8621CAA606C007A30AD /* LoginSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53B8611CAA606C007A30AD /* LoginSession.swift */; };
 		0B53B8651CAA615D007A30AD /* MapperHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53B8641CAA615D007A30AD /* MapperHelper.swift */; };
 		0B53B8671CAA6293007A30AD /* HelperAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53B8661CAA6293007A30AD /* HelperAssembly.swift */; };
-		0B5D462A1CAA77D800BCF201 /* VolatileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D46291CAA77D800BCF201 /* VolatileStorage.swift */; };
 		0B5D462F1CAA87A900BCF201 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D462E1CAA87A900BCF201 /* MapViewController.swift */; };
 		0B5D46311CAA87B700BCF201 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D46301CAA87B700BCF201 /* MapPresenter.swift */; };
-		0B5D46331CAA87BF00BCF201 /* MapPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D46321CAA87BF00BCF201 /* MapPresenterProtocol.swift */; };
 		0B5D46361CAA89A800BCF201 /* LogoutInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D46351CAA89A800BCF201 /* LogoutInteractor.swift */; };
 		0B5D46381CAA89B100BCF201 /* LogoutInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D46371CAA89B100BCF201 /* LogoutInteractorProtocol.swift */; };
 		0B5D463A1CAA91A400BCF201 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B5D46391CAA91A400BCF201 /* MapKit.framework */; };
@@ -52,10 +50,8 @@
 		0B53B8611CAA606C007A30AD /* LoginSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSession.swift; sourceTree = "<group>"; };
 		0B53B8641CAA615D007A30AD /* MapperHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapperHelper.swift; sourceTree = "<group>"; };
 		0B53B8661CAA6293007A30AD /* HelperAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperAssembly.swift; sourceTree = "<group>"; };
-		0B5D46291CAA77D800BCF201 /* VolatileStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolatileStorage.swift; sourceTree = "<group>"; };
 		0B5D462E1CAA87A900BCF201 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0B5D46301CAA87B700BCF201 /* MapPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
-		0B5D46321CAA87BF00BCF201 /* MapPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPresenterProtocol.swift; sourceTree = "<group>"; };
 		0B5D46351CAA89A800BCF201 /* LogoutInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutInteractor.swift; sourceTree = "<group>"; };
 		0B5D46371CAA89B100BCF201 /* LogoutInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutInteractorProtocol.swift; sourceTree = "<group>"; };
 		0B5D46391CAA91A400BCF201 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -123,7 +119,6 @@
 				0B5D463B1CAA938300BCF201 /* LogoutSession.swift */,
 				0B53B85F1CAA6018007A30AD /* Account.swift */,
 				0B53B85D1CAA5EFB007A30AD /* Session.swift */,
-				0B5D46291CAA77D800BCF201 /* VolatileStorage.swift */,
 				0B5D46441CAA9AB100BCF201 /* StudentLocationsResponse.swift */,
 				0B5D46421CAA994A00BCF201 /* StudentLocation.swift */,
 			);
@@ -143,7 +138,6 @@
 			children = (
 				0B5D462E1CAA87A900BCF201 /* MapViewController.swift */,
 				0B5D46301CAA87B700BCF201 /* MapPresenter.swift */,
-				0B5D46321CAA87BF00BCF201 /* MapPresenterProtocol.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -420,7 +414,6 @@
 				0BA5625C1CA9545C009904C1 /* LoginPresenterProtocol.swift in Sources */,
 				0B5D46361CAA89A800BCF201 /* LogoutInteractor.swift in Sources */,
 				0B5D46451CAA9AB100BCF201 /* StudentLocationsResponse.swift in Sources */,
-				0B5D46331CAA87BF00BCF201 /* MapPresenterProtocol.swift in Sources */,
 				0B5FE5851CA968A6003624FB /* LoginDTO.swift in Sources */,
 				0B53B8651CAA615D007A30AD /* MapperHelper.swift in Sources */,
 				0B5FE5891CA969AD003624FB /* URLProvider.swift in Sources */,
@@ -436,7 +429,6 @@
 				0BA5623F1CA9096F009904C1 /* AppDelegate.swift in Sources */,
 				0B53B85E1CAA5EFB007A30AD /* Session.swift in Sources */,
 				0BA562541CA95387009904C1 /* ControllerAssembly.swift in Sources */,
-				0B5D462A1CAA77D800BCF201 /* VolatileStorage.swift in Sources */,
 				0B53B8571CAA58B5007A30AD /* LoginInteractor.swift in Sources */,
 				0B5D46381CAA89B100BCF201 /* LogoutInteractorProtocol.swift in Sources */,
 				0B53B8591CAA58C0007A30AD /* LoginInteractorProtocol.swift in Sources */,

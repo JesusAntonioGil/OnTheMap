@@ -41,7 +41,6 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
 extension LoginPresenter: LoginInteractorDelegate {
     
     func loginInteractorSuccess(loginSession: LoginSession) {
-        VolatileStorage.shared.loginSession = loginSession
         delegate?.loginPresenterSuccess()
     }
     

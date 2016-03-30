@@ -9,16 +9,16 @@
 import UIKit
 
 
-@objc protocol MapPresenterDelegate {
+protocol MapPresenterDelegate {
     func mapPresenterLogoutSuccess()
     func mapPresenterLogoutError(error: NSError)
     
-    func mapPresenterStudentLocationsSuccess(studentLocationsResponse: StudentLocationsResponse)
+    func mapPresenterStudentLocationsSuccess(studentLocations: [StudentLocationStruct])
     func mapPresenterStudentLocationsError(error: NSError)
 }
 
 
-class MapPresenter: NSObject, MapPresenterProtocol {
+class MapPresenter: NSObject {
 
     //Injected
     var logoutInteractorProtocol: LogoutInteractorProtocol!
@@ -60,7 +60,14 @@ extension MapPresenter: LogoutInteractorDelegate {
 extension MapPresenter: StudentLocationsInteractorDelegate {
     
     func studentLocationsInteractorSuccess(studentLocationsResponse: StudentLocationsResponse) {
-        delegate?.mapPresenterStudentLocationsSuccess(studentLocationsResponse)
+        
+        var locationsArray = [StudentLocationStruct]()
+        for studentLocation in studentLocationsResponse.locations {
+            let structLocation = StudentLocationStruct(dictionary: studentLocation.dictionaryDescription)
+            locationsArray.append(structLocation)
+        }
+        
+        delegate?.mapPresenterStudentLocationsSuccess(locationsArray)
     }
     
     func studentLocationsInteractorError(error: NSError) {
