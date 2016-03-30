@@ -63,6 +63,7 @@ class ControllerAssembly: TyphoonAssembly {
         return TyphoonDefinition.withClass(MapViewController.self) {
             (definition) in
                 definition.injectProperty("presenter", with: self.mapPresenter())
+                definition.injectProperty("controllerAssembly", with: self)
         }
     }
     
@@ -82,4 +83,26 @@ class ControllerAssembly: TyphoonAssembly {
 
     }
     
+    //MARK: LocationViewController
+    
+    internal dynamic func editPositionNavigationController() -> AnyObject {
+        return TyphoonDefinition.withFactory(storyboard("Main" as NSString, factory: self), selector: instantiateControllerSelector, parameters: { (method) -> Void in
+            method.injectParameterWith("editPositionNavigationController")
+            }, configuration: nil)
+    }
+    
+    internal dynamic func locationViewController() -> AnyObject {
+        return TyphoonDefinition.withClass(LocationViewController.self) {
+            (definition) in
+                definition.injectProperty("controllerAssembly", with: self)
+        }
+    }
+    
+    //MARK: LinkViewController
+    
+    internal dynamic func linkViewController() -> AnyObject {
+        return TyphoonDefinition.withFactory(storyboard("Main" as NSString, factory: self), selector: instantiateControllerSelector, parameters: { (method) -> Void in
+            method.injectParameterWith("LinkViewController")
+            }, configuration: nil)
+    }
 }

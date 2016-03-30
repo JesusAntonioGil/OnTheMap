@@ -30,6 +30,9 @@
 		0B5FE5851CA968A6003624FB /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FE5841CA968A6003624FB /* LoginDTO.swift */; };
 		0B5FE5871CA9695D003624FB /* URLEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FE5861CA9695D003624FB /* URLEndpoint.swift */; };
 		0B5FE5891CA969AD003624FB /* URLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FE5881CA969AD003624FB /* URLProvider.swift */; };
+		0B6A80541CAC12FA000AB2F3 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A80531CAC12FA000AB2F3 /* LocationViewController.swift */; };
+		0B6A80561CAC15E1000AB2F3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6A80551CAC15E1000AB2F3 /* CoreLocation.framework */; };
+		0B6A80591CAC17F4000AB2F3 /* LinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A80581CAC17F4000AB2F3 /* LinkViewController.swift */; };
 		0BA5623F1CA9096F009904C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA5623E1CA9096F009904C1 /* AppDelegate.swift */; };
 		0BA562441CA9096F009904C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BA562421CA9096F009904C1 /* Main.storyboard */; };
 		0BA562461CA9096F009904C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BA562451CA9096F009904C1 /* Assets.xcassets */; };
@@ -65,6 +68,9 @@
 		0B5FE5841CA968A6003624FB /* LoginDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
 		0B5FE5861CA9695D003624FB /* URLEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEndpoint.swift; sourceTree = "<group>"; };
 		0B5FE5881CA969AD003624FB /* URLProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLProvider.swift; sourceTree = "<group>"; };
+		0B6A80531CAC12FA000AB2F3 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		0B6A80551CAC15E1000AB2F3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0B6A80581CAC17F4000AB2F3 /* LinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkViewController.swift; sourceTree = "<group>"; };
 		0BA5623B1CA9096F009904C1 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BA5623E1CA9096F009904C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BA562431CA9096F009904C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B6A80561CAC15E1000AB2F3 /* CoreLocation.framework in Frameworks */,
 				0B5D463A1CAA91A400BCF201 /* MapKit.framework in Frameworks */,
 				8C9C690063A474B5F338AD3E /* Pods_OnTheMap.framework in Frameworks */,
 			);
@@ -204,6 +211,22 @@
 			path = RequestClient;
 			sourceTree = "<group>";
 		};
+		0B6A80521CAC12DE000AB2F3 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				0B6A80531CAC12FA000AB2F3 /* LocationViewController.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		0B6A80571CAC17EA000AB2F3 /* Link */ = {
+			isa = PBXGroup;
+			children = (
+				0B6A80581CAC17F4000AB2F3 /* LinkViewController.swift */,
+			);
+			path = Link;
+			sourceTree = "<group>";
+		};
 		0BA562321CA9096F009904C1 = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +278,8 @@
 				0BA562561CA95421009904C1 /* Login */,
 				0B5D462B1CAA878000BCF201 /* Map */,
 				0B5D46461CAAA8C700BCF201 /* List */,
+				0B6A80521CAC12DE000AB2F3 /* Location */,
+				0B6A80571CAC17EA000AB2F3 /* Link */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -281,6 +306,7 @@
 		7CC84DC30E089BA1D934484F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B6A80551CAC15E1000AB2F3 /* CoreLocation.framework */,
 				0B5D46391CAA91A400BCF201 /* MapKit.framework */,
 				129F4658FAD0D703BF3A05FF /* Pods_OnTheMap.framework */,
 			);
@@ -416,6 +442,8 @@
 				0B5D46451CAA9AB100BCF201 /* StudentLocationsResponse.swift in Sources */,
 				0B5FE5851CA968A6003624FB /* LoginDTO.swift in Sources */,
 				0B53B8651CAA615D007A30AD /* MapperHelper.swift in Sources */,
+				0B6A80541CAC12FA000AB2F3 /* LocationViewController.swift in Sources */,
+				0B6A80591CAC17F4000AB2F3 /* LinkViewController.swift in Sources */,
 				0B5FE5891CA969AD003624FB /* URLProvider.swift in Sources */,
 				0B5D46411CAA98AC00BCF201 /* StudentLocationsInteractorProtocol.swift in Sources */,
 				0BA5625A1CA95451009904C1 /* LoginPresenter.swift in Sources */,

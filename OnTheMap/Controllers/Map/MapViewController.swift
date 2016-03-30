@@ -19,6 +19,7 @@ class MapViewController: UIViewController {
     
     //Injected
     var presenter: MapPresenter!
+    var controllerAssembly: ControllerAssembly!
     
     var locations: [StudentLocationStruct]!
     
@@ -44,10 +45,18 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func onRefreshButtonTap(sender: AnyObject) {
-        self.refreshButton.enabled = false
+        refreshButton.enabled = false
         HUD.show(.Progress)
         presenter.studentLocations()
     }
+    
+    @IBAction func onPoiButtonTap(sender: AnyObject) {
+        let editPositionNavigationController: UINavigationController = self.controllerAssembly.editPositionNavigationController() as! UINavigationController
+        editPositionNavigationController.modalTransitionStyle = .CrossDissolve
+        navigationController?.presentViewController(editPositionNavigationController, animated: true, completion: nil)
+    }
+    
+    
     
     //MARK: PRIVATE
     
