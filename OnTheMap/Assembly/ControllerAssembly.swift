@@ -103,6 +103,15 @@ class ControllerAssembly: TyphoonAssembly {
     internal dynamic func linkViewController() -> AnyObject {
         return TyphoonDefinition.withFactory(storyboard("Main" as NSString, factory: self), selector: instantiateControllerSelector, parameters: { (method) -> Void in
             method.injectParameterWith("LinkViewController")
-            }, configuration: nil)
+            }, configuration: { (definition) in
+                definition.injectProperty("presenter", with: self.linkPresenter())
+        })
+    }
+    
+    internal dynamic func linkPresenter() -> AnyObject {
+        return TyphoonDefinition.withClass(LinkPresenter.self) {
+            (definition) in
+            
+        }
     }
 }

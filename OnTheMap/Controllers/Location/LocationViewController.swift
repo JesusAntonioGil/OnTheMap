@@ -18,6 +18,8 @@ class LocationViewController: UIViewController {
     //Injected
     var controllerAssembly: ControllerAssembly!
     
+    var studentLocation: StudentLocation!
+    
     
     //MARK: LIFE CYCLE
     
@@ -61,6 +63,8 @@ class LocationViewController: UIViewController {
     private func pushToLinkViewController(placemark: CLPlacemark) {
         let linkViewController: LinkViewController = controllerAssembly.linkViewController() as! LinkViewController
         linkViewController.placemark = placemark
+        linkViewController.mapString = locationTextField.text
+        linkViewController.studentLocation = studentLocation
         navigationController?.pushViewController(linkViewController, animated: true)
     }
 

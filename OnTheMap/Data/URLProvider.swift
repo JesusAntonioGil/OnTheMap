@@ -31,6 +31,7 @@ class URLProvider: NSObject {
                 case .Login(_):                     return urlWithEndpoint(kUdacityHost, endpoint: "/session")
                 case .Logout():                     return urlWithEndpoint(kUdacityHost, endpoint: "/session")
                 case .StudentLocations():           return urlWithEndpoint(kParseHost, endpoint: "/StudentLocation")
+                case .UpdateStudentLocetion(_):     return urlWithEndpoint(kParseHost, endpoint: "/StudentLocation")
             }
         }
     }
@@ -38,9 +39,10 @@ class URLProvider: NSObject {
     var paramenters: [String]! {
         get {
             switch urlEndpoint {
-                case .Login(_):                     return nil
-                case .Logout():                     return nil
-                case .StudentLocations():           return nil
+                case .Login(_):                                         return nil
+                case .Logout():                                         return nil
+                case .StudentLocations():                               return nil
+                case .UpdateStudentLocetion(let  updateLocationDTO):    return [updateLocationDTO.parameters]
             }
         }
     }
@@ -51,6 +53,7 @@ class URLProvider: NSObject {
                 case .Login(let loginDTO):          return loginDTO.parameters
                 case .Logout():                     return nil
                 case .StudentLocations():           return nil
+                case .UpdateStudentLocetion(let  updateLocationDTO):    return updateLocationDTO.body
             }
         }
     }
@@ -61,6 +64,7 @@ class URLProvider: NSObject {
                 case .Login(_):                     return "POST"
                 case .Logout():                     return "DELETE"
                 case .StudentLocations():           return "GET"
+                case .UpdateStudentLocetion(_):      return "PUT"
             }
         }
     }

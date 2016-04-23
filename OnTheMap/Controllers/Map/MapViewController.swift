@@ -16,12 +16,12 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     
-    
     //Injected
     var presenter: MapPresenter!
     var controllerAssembly: ControllerAssembly!
     
     var locations: [StudentLocationStruct]!
+    
     
     //MARK: LIFE CYCLE
     

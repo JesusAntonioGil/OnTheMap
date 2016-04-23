@@ -14,4 +14,5 @@ enum URLEndpoint {
     case Login(loginDTO: LoginDTO)
     case Logout()
     case StudentLocations()
+    case UpdateStudentLocetion(updateLocationDTO: UpdateLocationDTO)
 }

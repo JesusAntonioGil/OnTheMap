@@ -42,6 +42,12 @@
 		0BA5625A1CA95451009904C1 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA562591CA95451009904C1 /* LoginPresenter.swift */; };
 		0BA5625C1CA9545C009904C1 /* LoginPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA5625B1CA9545C009904C1 /* LoginPresenterProtocol.swift */; };
 		8C9C690063A474B5F338AD3E /* Pods_OnTheMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 129F4658FAD0D703BF3A05FF /* Pods_OnTheMap.framework */; };
+		EA0625FC1CCB7F560014FC36 /* UpdateLocationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0625FB1CCB7F560014FC36 /* UpdateLocationDTO.swift */; };
+		EA0625FF1CCB829E0014FC36 /* UpdateStudentLocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0625FE1CCB829E0014FC36 /* UpdateStudentLocationInteractor.swift */; };
+		EA0626011CCB82AE0014FC36 /* UpdateStudentLocationInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0626001CCB82AE0014FC36 /* UpdateStudentLocationInteractorProtocol.swift */; };
+		EA0626031CCB83A20014FC36 /* UpdateLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0626021CCB83A20014FC36 /* UpdateLocationResponse.swift */; };
+		EA4E0B921CCC318200D765FB /* LinkPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4E0B911CCC318200D765FB /* LinkPresenter.swift */; };
+		EA4E0B941CCC319500D765FB /* LinkPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4E0B931CCC319500D765FB /* LinkPresenterProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +90,12 @@
 		129F4658FAD0D703BF3A05FF /* Pods_OnTheMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnTheMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B38097C72B8EA14971B94D2 /* Pods-OnTheMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnTheMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap.debug.xcconfig"; sourceTree = "<group>"; };
 		A45BE7197C20D419381FE285 /* Pods-OnTheMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnTheMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap.release.xcconfig"; sourceTree = "<group>"; };
+		EA0625FB1CCB7F560014FC36 /* UpdateLocationDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateLocationDTO.swift; sourceTree = "<group>"; };
+		EA0625FE1CCB829E0014FC36 /* UpdateStudentLocationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateStudentLocationInteractor.swift; sourceTree = "<group>"; };
+		EA0626001CCB82AE0014FC36 /* UpdateStudentLocationInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateStudentLocationInteractorProtocol.swift; sourceTree = "<group>"; };
+		EA0626021CCB83A20014FC36 /* UpdateLocationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateLocationResponse.swift; sourceTree = "<group>"; };
+		EA4E0B911CCC318200D765FB /* LinkPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkPresenter.swift; sourceTree = "<group>"; };
+		EA4E0B931CCC319500D765FB /* LinkPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkPresenterProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +118,7 @@
 				0B53B8551CAA58AA007A30AD /* Login */,
 				0B5D46341CAA899B00BCF201 /* Logout */,
 				0B5D463D1CAA989000BCF201 /* StudentLocations */,
+				EA0625FD1CCB828B0014FC36 /* UpdateStudentLocation */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -128,6 +141,7 @@
 				0B53B85D1CAA5EFB007A30AD /* Session.swift */,
 				0B5D46441CAA9AB100BCF201 /* StudentLocationsResponse.swift */,
 				0B5D46421CAA994A00BCF201 /* StudentLocation.swift */,
+				EA0626021CCB83A20014FC36 /* UpdateLocationResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				0B5FE5841CA968A6003624FB /* LoginDTO.swift */,
+				EA0625FB1CCB7F560014FC36 /* UpdateLocationDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -223,6 +238,8 @@
 			isa = PBXGroup;
 			children = (
 				0B6A80581CAC17F4000AB2F3 /* LinkViewController.swift */,
+				EA4E0B911CCC318200D765FB /* LinkPresenter.swift */,
+				EA4E0B931CCC319500D765FB /* LinkPresenterProtocol.swift */,
 			);
 			path = Link;
 			sourceTree = "<group>";
@@ -311,6 +328,15 @@
 				129F4658FAD0D703BF3A05FF /* Pods_OnTheMap.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA0625FD1CCB828B0014FC36 /* UpdateStudentLocation */ = {
+			isa = PBXGroup;
+			children = (
+				EA0625FE1CCB829E0014FC36 /* UpdateStudentLocationInteractor.swift */,
+				EA0626001CCB82AE0014FC36 /* UpdateStudentLocationInteractorProtocol.swift */,
+			);
+			path = UpdateStudentLocation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,6 +461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA0626031CCB83A20014FC36 /* UpdateLocationResponse.swift in Sources */,
 				0B5D46481CAAA8DC00BCF201 /* ListViewController.swift in Sources */,
 				0B53B8671CAA6293007A30AD /* HelperAssembly.swift in Sources */,
 				0BA5625C1CA9545C009904C1 /* LoginPresenterProtocol.swift in Sources */,
@@ -450,17 +477,22 @@
 				0B5D46431CAA994A00BCF201 /* StudentLocation.swift in Sources */,
 				0B5FE5811CA9676C003624FB /* RequestClient.swift in Sources */,
 				0B5D463F1CAA98A100BCF201 /* StudentLocationsInteractor.swift in Sources */,
+				EA0625FC1CCB7F560014FC36 /* UpdateLocationDTO.swift in Sources */,
 				0B5D46311CAA87B700BCF201 /* MapPresenter.swift in Sources */,
 				0B5D462F1CAA87A900BCF201 /* MapViewController.swift in Sources */,
 				0BA562581CA95433009904C1 /* LoginViewController.swift in Sources */,
 				0B5D463C1CAA938300BCF201 /* LogoutSession.swift in Sources */,
 				0BA5623F1CA9096F009904C1 /* AppDelegate.swift in Sources */,
+				EA4E0B941CCC319500D765FB /* LinkPresenterProtocol.swift in Sources */,
 				0B53B85E1CAA5EFB007A30AD /* Session.swift in Sources */,
 				0BA562541CA95387009904C1 /* ControllerAssembly.swift in Sources */,
 				0B53B8571CAA58B5007A30AD /* LoginInteractor.swift in Sources */,
+				EA0626011CCB82AE0014FC36 /* UpdateStudentLocationInteractorProtocol.swift in Sources */,
+				EA0625FF1CCB829E0014FC36 /* UpdateStudentLocationInteractor.swift in Sources */,
 				0B5D46381CAA89B100BCF201 /* LogoutInteractorProtocol.swift in Sources */,
 				0B53B8591CAA58C0007A30AD /* LoginInteractorProtocol.swift in Sources */,
 				0B53B85B1CAA5A10007A30AD /* InteractorAssembly.swift in Sources */,
+				EA4E0B921CCC318200D765FB /* LinkPresenter.swift in Sources */,
 				0B5FE5871CA9695D003624FB /* URLEndpoint.swift in Sources */,
 				0B53B8621CAA606C007A30AD /* LoginSession.swift in Sources */,
 				0B53B8601CAA6018007A30AD /* Account.swift in Sources */,
@@ -578,6 +610,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = OnTheMap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.innocv.OnTheMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -590,6 +623,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = OnTheMap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.innocv.OnTheMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";

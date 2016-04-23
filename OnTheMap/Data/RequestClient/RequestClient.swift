@@ -26,7 +26,7 @@ class RequestClient: NSObject {
         switch endpoint {
             case .Login(_), .Logout():
                 requestUdacity(endpoint)
-            case .StudentLocations():
+            case .StudentLocations(), .UpdateStudentLocetion(_):
                 requestParse(endpoint)
         }
     }

@@ -17,10 +17,19 @@ class LinkViewController: UIViewController {
     @IBOutlet weak var linkTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     
+    //Injected
+    var presenter: LinkPresenterProtocol!
+    
     var placemark: CLPlacemark!
+    var mapString: String!
+    var studentLocation: StudentLocation!
     
     
     //MARK: LIFE CYCLE
+    
+    override func typhoonDidInject() {
+        presenter.delegate = self
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +50,18 @@ class LinkViewController: UIViewController {
     //MARK: ACTIONS
     
     @IBAction func onSubmitButtonTap(sender: AnyObject) {
+        presenter.updateLocation(placemark, mapString: mapString, mediaURL: linkTextField.text!, studentLocation: studentLocation)
+    }
+    
+}
+
+extension LinkViewController: LinkPresenterDelegate {
+    
+    func linkPresenterSuccess() {
         
     }
     
+    func linkPresenterError(error: NSError) {
+        
+    }
 }
