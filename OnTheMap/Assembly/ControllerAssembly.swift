@@ -111,7 +111,7 @@ class ControllerAssembly: TyphoonAssembly {
     internal dynamic func linkPresenter() -> AnyObject {
         return TyphoonDefinition.withClass(LinkPresenter.self) {
             (definition) in
-            
+                definition.injectProperty("updateStudentLocationInteractorProtocol", with: self.interactorAssembly.updateStudentLocationInteractor())
         }
     }
 }

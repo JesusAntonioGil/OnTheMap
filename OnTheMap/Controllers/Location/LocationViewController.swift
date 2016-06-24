@@ -18,13 +18,15 @@ class LocationViewController: UIViewController {
     //Injected
     var controllerAssembly: ControllerAssembly!
     
-    var studentLocation: StudentLocation!
+    var studentLocation: StudentLocation = StudentLocation()
     
     
     //MARK: LIFE CYCLE
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        studentLocation.uniqueKey = "6507580000"
     }
 
     override func didReceiveMemoryWarning() {
