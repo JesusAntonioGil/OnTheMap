@@ -47,7 +47,6 @@
 		EA0626011CCB82AE0014FC36 /* UpdateStudentLocationInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0626001CCB82AE0014FC36 /* UpdateStudentLocationInteractorProtocol.swift */; };
 		EA0626031CCB83A20014FC36 /* UpdateLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0626021CCB83A20014FC36 /* UpdateLocationResponse.swift */; };
 		EA4E0B921CCC318200D765FB /* LinkPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4E0B911CCC318200D765FB /* LinkPresenter.swift */; };
-		EA4E0B941CCC319500D765FB /* LinkPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4E0B931CCC319500D765FB /* LinkPresenterProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,7 +94,6 @@
 		EA0626001CCB82AE0014FC36 /* UpdateStudentLocationInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateStudentLocationInteractorProtocol.swift; sourceTree = "<group>"; };
 		EA0626021CCB83A20014FC36 /* UpdateLocationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateLocationResponse.swift; sourceTree = "<group>"; };
 		EA4E0B911CCC318200D765FB /* LinkPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkPresenter.swift; sourceTree = "<group>"; };
-		EA4E0B931CCC319500D765FB /* LinkPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkPresenterProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,7 +237,6 @@
 			children = (
 				0B6A80581CAC17F4000AB2F3 /* LinkViewController.swift */,
 				EA4E0B911CCC318200D765FB /* LinkPresenter.swift */,
-				EA4E0B931CCC319500D765FB /* LinkPresenterProtocol.swift */,
 			);
 			path = Link;
 			sourceTree = "<group>";
@@ -483,7 +480,6 @@
 				0BA562581CA95433009904C1 /* LoginViewController.swift in Sources */,
 				0B5D463C1CAA938300BCF201 /* LogoutSession.swift in Sources */,
 				0BA5623F1CA9096F009904C1 /* AppDelegate.swift in Sources */,
-				EA4E0B941CCC319500D765FB /* LinkPresenterProtocol.swift in Sources */,
 				0B53B85E1CAA5EFB007A30AD /* Session.swift in Sources */,
 				0BA562541CA95387009904C1 /* ControllerAssembly.swift in Sources */,
 				0B53B8571CAA58B5007A30AD /* LoginInteractor.swift in Sources */,

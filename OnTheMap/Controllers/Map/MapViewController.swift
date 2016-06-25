@@ -52,7 +52,7 @@ class MapViewController: UIViewController {
     
     @IBAction func onPoiButtonTap(sender: AnyObject) {
         let editPositionNavigationController: UINavigationController = self.controllerAssembly.editPositionNavigationController() as! UINavigationController
-        editPositionNavigationController.modalTransitionStyle = .CrossDissolve
+        (editPositionNavigationController.viewControllers[0] as! LocationViewController).studentLocation = findCurrentUser()
         navigationController?.presentViewController(editPositionNavigationController, animated: true, completion: nil)
     }
     
@@ -70,6 +70,16 @@ class MapViewController: UIViewController {
             annotation.subtitle = studentLocation.mediaURL
             mapView.addAnnotation(annotation)
         }
+    }
+    
+    private func findCurrentUser() -> StudentLocationStruct! {
+        for studentLocationStruct in locations {
+            if studentLocationStruct.uniqueKey == userKey {
+                return studentLocationStruct
+            }
+        }
+        
+        return nil
     }
     
 }

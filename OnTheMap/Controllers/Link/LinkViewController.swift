@@ -18,11 +18,11 @@ class LinkViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     //Injected
-    var presenter: LinkPresenterProtocol!
+    var presenter: LinkPresenter!
     
     var placemark: CLPlacemark!
     var mapString: String!
-    var studentLocation: StudentLocation!
+    var studentLocation: StudentLocationStruct!
     
     
     //MARK: LIFE CYCLE
@@ -55,10 +55,18 @@ class LinkViewController: UIViewController {
     
 }
 
+extension LinkViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
 extension LinkViewController: LinkPresenterDelegate {
     
     func linkPresenterSuccess() {
-        
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func linkPresenterError(error: NSError) {

@@ -64,7 +64,7 @@ class URLProvider: NSObject {
                 case .Login(_):                     return "POST"
                 case .Logout():                     return "DELETE"
                 case .StudentLocations():           return "GET"
-                case .UpdateStudentLocetion(_):      return "PUT"
+                case .UpdateStudentLocetion(_):     return "PUT"
             }
         }
     }

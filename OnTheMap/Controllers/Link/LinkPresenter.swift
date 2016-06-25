@@ -16,7 +16,7 @@ import CoreLocation
 }
 
 
-class LinkPresenter: NSObject, LinkPresenterProtocol {
+class LinkPresenter: NSObject {
 
     //Injected
     var updateStudentLocationInteractorProtocol: UpdateStudentLocationInteractorProtocol!
@@ -32,8 +32,8 @@ class LinkPresenter: NSObject, LinkPresenterProtocol {
     
     //MARK: PUBLIC
     
-    func updateLocation(placemark: CLPlacemark, mapString: String, mediaURL: String, studentLocation: StudentLocation) {
-        let updateLocationDTO = UpdateLocationDTO(objectId: studentLocation.objectId, uniqueKey: studentLocation.uniqueKey, firstName: studentLocation.firstName, lastName: studentLocation.lastName, mapString: mapString, mediaURL: mediaURL, latitude: String(placemark.location?.coordinate.latitude), longitude: String(placemark.location?.coordinate.longitude))
+    func updateLocation(placemark: CLPlacemark, mapString: String, mediaURL: String, studentLocation: StudentLocationStruct) {
+        let updateLocationDTO = UpdateLocationDTO(objectId: studentLocation.objectId, uniqueKey: studentLocation.uniqueKey, firstName: studentLocation.firstName, lastName: studentLocation.lastName, mapString: mapString, mediaURL: mediaURL, latitude: "\(placemark.location!.coordinate.latitude)", longitude: "\(placemark.location!.coordinate.longitude)")
         
         updateStudentLocationInteractorProtocol.updateLocation(updateLocationDTO)
     }

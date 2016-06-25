@@ -9,6 +9,9 @@
 import UIKit
 
 
+var userKey: String = ""
+
+
 @objc protocol LoginPresenterDelegate {
     func loginPresenterSuccess()
     func loginPresenterError(error: NSError)
@@ -41,6 +44,7 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
 extension LoginPresenter: LoginInteractorDelegate {
     
     func loginInteractorSuccess(loginSession: LoginSession) {
+        userKey = loginSession.account.key
         delegate?.loginPresenterSuccess()
     }
     

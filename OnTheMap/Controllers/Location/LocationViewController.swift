@@ -18,15 +18,13 @@ class LocationViewController: UIViewController {
     //Injected
     var controllerAssembly: ControllerAssembly!
     
-    var studentLocation: StudentLocation = StudentLocation()
+    var studentLocation: StudentLocationStruct!
     
     
     //MARK: LIFE CYCLE
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        studentLocation.uniqueKey = "6507580000"
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,12 +49,14 @@ class LocationViewController: UIViewController {
     //MARK: PRIVATE
     
     private func checkAddressString() {
+        HUD.show(.Progress)
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(locationTextField.text!) { (placemarks, error) in
             if(error != nil) {
                 HUD.show(.Label("Could not geocode the address"))
                 HUD.hide(afterDelay: 2.0)
             } else {
+                HUD.hide()
                self.pushToLinkViewController(placemarks![0])
             }
         }
@@ -70,4 +70,12 @@ class LocationViewController: UIViewController {
         navigationController?.pushViewController(linkViewController, animated: true)
     }
 
+}
+
+extension LocationViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
