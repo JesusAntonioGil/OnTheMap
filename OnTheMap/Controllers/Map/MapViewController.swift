@@ -28,8 +28,13 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        HUD.show(.Progress)
         presenter.delegate = self
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        HUD.show(.Progress)
         presenter.studentLocations()
     }
 
