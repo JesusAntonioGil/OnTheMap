@@ -18,7 +18,7 @@ class ListViewController: UIViewController {
     //Injected
     var presenter: MapPresenter!
     
-    var studentLocations: [StudentLocationStruct]!
+    //var studentLocations: [StudentLocationStruct]!
     
     
     //MARK: LIFE CYCLE
@@ -67,10 +67,10 @@ extension ListViewController: MapPresenterDelegate {
         })
     }
     
-    func mapPresenterStudentLocationsSuccess(studentLocations: [StudentLocationStruct]) {
+    func mapPresenterStudentLocationsSuccess() {
         dispatch_async(dispatch_get_main_queue(),{
             HUD.hide()
-            self.studentLocations = studentLocations
+            //self.studentLocations = studentLocations
             self.tableView.reloadData()
             self.refreshButton.enabled = true
         })
@@ -95,16 +95,16 @@ extension ListViewController: UITableViewDelegate {
 extension ListViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(studentLocations != nil) {
-            return studentLocations.count
+        if(SharedLocations.sharedInstance.studentLocations != nil) {
+            return SharedLocations.sharedInstance.studentLocations.count
         }
         return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init(style: .Subtitle, reuseIdentifier: "cell")
-        cell.textLabel?.text = studentLocations[indexPath.row].firstName + " " + studentLocations[indexPath.row].lastName
-        cell.detailTextLabel?.text = studentLocations[indexPath.row].mediaURL
+        cell.textLabel?.text = SharedLocations.sharedInstance.studentLocations[indexPath.row].firstName + " " + SharedLocations.sharedInstance.studentLocations[indexPath.row].lastName
+        cell.detailTextLabel?.text = SharedLocations.sharedInstance.studentLocations[indexPath.row].mediaURL
         cell.imageView?.image = UIImage(named: "poi")
         return cell
     }
@@ -112,7 +112,7 @@ extension ListViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if let requestUrl = NSURL(string: studentLocations[indexPath.row].mediaURL) {
+        if let requestUrl = NSURL(string: SharedLocations.sharedInstance.studentLocations[indexPath.row].mediaURL) {
             if UIApplication.sharedApplication().canOpenURL(requestUrl) {
                 UIApplication.sharedApplication().openURL(requestUrl)
             }

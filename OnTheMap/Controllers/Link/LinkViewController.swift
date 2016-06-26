@@ -41,10 +41,6 @@ class LinkViewController: UIViewController {
         let adjustedRegion = mapView.regionThatFits(region)
         mapView.setRegion(adjustedRegion, animated: true)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
 
     //MARK: ACTIONS

@@ -20,7 +20,7 @@ class MapViewController: UIViewController {
     var presenter: MapPresenter!
     var controllerAssembly: ControllerAssembly!
     
-    var locations: [StudentLocationStruct]!
+    //var locations: [StudentLocationStruct]!
     
     
     //MARK: LIFE CYCLE
@@ -29,18 +29,14 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         presenter.delegate = self
+        HUD.show(.Progress)
+        presenter.studentLocations()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        HUD.show(.Progress)
-        presenter.studentLocations()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 
     //MARK: ACTIONS
     
@@ -68,7 +64,7 @@ class MapViewController: UIViewController {
     private func addStudentAnnotations() {
         mapView.removeAnnotations(mapView.annotations)
         
-        for studentLocation in locations {
+        for studentLocation in SharedLocations.sharedInstance.studentLocations {
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: Double(studentLocation.latitude), longitude: Double(studentLocation.longitude))
             annotation.title = studentLocation.firstName + " " + studentLocation.lastName
@@ -78,7 +74,7 @@ class MapViewController: UIViewController {
     }
     
     private func findCurrentUser() -> StudentLocationStruct! {
-        for studentLocationStruct in locations {
+        for studentLocationStruct in SharedLocations.sharedInstance.studentLocations {
             if studentLocationStruct.uniqueKey == userKey {
                 return studentLocationStruct
             }
@@ -106,10 +102,9 @@ extension MapViewController: MapPresenterDelegate {
         })
     }
     
-    func mapPresenterStudentLocationsSuccess(studentLocations: [StudentLocationStruct]) {
+    func mapPresenterStudentLocationsSuccess() {
         dispatch_async(dispatch_get_main_queue(),{
             HUD.hide()
-            self.locations = studentLocations
             self.addStudentAnnotations()
             self.refreshButton.enabled = true
         })

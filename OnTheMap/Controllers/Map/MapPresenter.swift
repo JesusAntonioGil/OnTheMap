@@ -13,7 +13,7 @@ protocol MapPresenterDelegate {
     func mapPresenterLogoutSuccess()
     func mapPresenterLogoutError(error: NSError)
     
-    func mapPresenterStudentLocationsSuccess(studentLocations: [StudentLocationStruct])
+    func mapPresenterStudentLocationsSuccess()
     func mapPresenterStudentLocationsError(error: NSError)
 }
 
@@ -60,7 +60,6 @@ extension MapPresenter: LogoutInteractorDelegate {
 extension MapPresenter: StudentLocationsInteractorDelegate {
     
     func studentLocationsInteractorSuccess(studentLocationsResponse: StudentLocationsResponse) {
-        
         var locationsArray = [StudentLocationStruct]()
         for studentLocation in studentLocationsResponse.locations {
             let structLocation = StudentLocationStruct(dictionary: studentLocation.dictionaryDescription)
@@ -69,7 +68,9 @@ extension MapPresenter: StudentLocationsInteractorDelegate {
         
         locationsArray.sortInPlace({ $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedAscending })
         
-        delegate?.mapPresenterStudentLocationsSuccess(locationsArray)
+        SharedLocations.sharedInstance.studentLocations = locationsArray
+        
+        delegate?.mapPresenterStudentLocationsSuccess()
     }
     
     func studentLocationsInteractorError(error: NSError) {

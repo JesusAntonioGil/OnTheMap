@@ -47,6 +47,7 @@
 		EA0626011CCB82AE0014FC36 /* UpdateStudentLocationInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0626001CCB82AE0014FC36 /* UpdateStudentLocationInteractorProtocol.swift */; };
 		EA0626031CCB83A20014FC36 /* UpdateLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0626021CCB83A20014FC36 /* UpdateLocationResponse.swift */; };
 		EA4E0B921CCC318200D765FB /* LinkPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4E0B911CCC318200D765FB /* LinkPresenter.swift */; };
+		EA502EF11D1FDAD5009A4C1E /* SharedLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA502EF01D1FDAD5009A4C1E /* SharedLocations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		EA0626001CCB82AE0014FC36 /* UpdateStudentLocationInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateStudentLocationInteractorProtocol.swift; sourceTree = "<group>"; };
 		EA0626021CCB83A20014FC36 /* UpdateLocationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateLocationResponse.swift; sourceTree = "<group>"; };
 		EA4E0B911CCC318200D765FB /* LinkPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkPresenter.swift; sourceTree = "<group>"; };
+		EA502EF01D1FDAD5009A4C1E /* SharedLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedLocations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			children = (
 				0B5D462E1CAA87A900BCF201 /* MapViewController.swift */,
 				0B5D46301CAA87B700BCF201 /* MapPresenter.swift */,
+				EA502EF01D1FDAD5009A4C1E /* SharedLocations.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				0B53B8671CAA6293007A30AD /* HelperAssembly.swift in Sources */,
 				0BA5625C1CA9545C009904C1 /* LoginPresenterProtocol.swift in Sources */,
 				0B5D46361CAA89A800BCF201 /* LogoutInteractor.swift in Sources */,
+				EA502EF11D1FDAD5009A4C1E /* SharedLocations.swift in Sources */,
 				0B5D46451CAA9AB100BCF201 /* StudentLocationsResponse.swift in Sources */,
 				0B5FE5851CA968A6003624FB /* LoginDTO.swift in Sources */,
 				0B53B8651CAA615D007A30AD /* MapperHelper.swift in Sources */,
